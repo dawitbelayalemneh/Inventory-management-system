@@ -10,6 +10,9 @@ from .views import (
     edit_laptop,
     edit_desktop,
     edit_mobile,
+    delete_laptop,
+    delete_desktop,
+    delete_mobile,
 )
 
 urlpatterns = [
@@ -25,4 +28,8 @@ urlpatterns = [
     path('edit_laptop/<int:pk>/', edit_laptop, name='edit_laptop'),
     path('edit_desktop/<int:pk>/', edit_desktop, name='edit_desktop'),
     path('edit_mobile/<int:pk>/', edit_mobile, name='edit_mobile'),
+
+    path('delete_laptop/<int:pk>/', delete_laptop, name='delete_laptop'),
+    path('delete_desktop/<int:pk>/', delete_desktop, name='delete_desktop'),
+    path('delete_mobile/<int:pk>/', delete_mobile, name='delete_mobile'),
 ]
