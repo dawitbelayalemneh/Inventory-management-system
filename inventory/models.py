@@ -12,7 +12,7 @@ class Device(models.Model):
         ('RESTOCKING', 'Item restocking in few days'),
     )
     
-    status = models.CharField(max_length=100, choices=choices, default='Sold')
+    status = models.CharField(max_length=100, choices=choices, default='SOLD')
     issues = models.CharField(max_length=100, default='No issues')
 
     class Meta:
