@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Laptop, Desktop, Mobile
 from .forms import LaptopForm, DesktopForm, MobileForm
 
@@ -62,3 +62,26 @@ def add_mobile(request):
         form = MobileForm()
 
     return render(request, 'add_new.html', {'form': form})
+
+def edit_device(request, pk, model, cls):
+    item = get_object_or_404(model, pk=pk)
+
+    if request.method == 'POST':
+        form = cls(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    else:
+        form = cls(instance=item)
+
+    return render(request, 'edit_item.html', {'form': form})
+
+def edit_laptop(request, pk):
+    return edit_device(request, pk, Laptop, LaptopForm)
+
+def edit_desktop(request, pk):
+    return edit_device(request, pk, Desktop, DesktopForm)
+
+def edit_mobile(request, pk):
+    return edit_device(request, pk, Mobile, MobileForm)

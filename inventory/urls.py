@@ -1,5 +1,16 @@
 from django.urls import path
-from .views import index, display_laptops, display_desktops, display_mobiles, add_laptop, add_desktop, add_mobile
+from .views import (
+    index,
+    display_laptops,
+    display_desktops,
+    display_mobiles,
+    add_laptop,
+    add_desktop,
+    add_mobile,
+    edit_laptop,
+    edit_desktop,
+    edit_mobile,
+)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -10,4 +21,8 @@ urlpatterns = [
     path('add_laptops/', add_laptop, name='add_laptop'),
     path('add_desktops/', add_desktop, name='add_desktop'),
     path('add_mobiles/', add_mobile, name='add_mobile'),
+
+    path('edit_laptop/<int:pk>/', edit_laptop, name='edit_laptop'),
+    path('edit_desktop/<int:pk>/', edit_desktop, name='edit_desktop'),
+    path('edit_mobile/<int:pk>/', edit_mobile, name='edit_mobile'),
 ]
